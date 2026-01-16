@@ -3,40 +3,56 @@ import Tarefa from '../../models/tarefa'
 
 import * as enums from '../../utils/enums/Tarefa'
 
+type TarefasState = {
+  itens: Tarefa[]
+}
+
+const initialState: TarefasState = {
+  itens: [
+    {
+      id: 1,
+      title: 'Fazer compra do mês',
+      alert: enums.Alert.NIVEL_2,
+      status: enums.Status.PENDING,
+      description: 'Ir ao mercado no primeiro dia do mês após receber o salário'
+    },
+    {
+      id: 2,
+      title: 'Estudar para a prova de matemática',
+      alert: enums.Alert.NIVEL_3,
+      status: enums.Status.PENDING,
+      description: 'Revisar os capítulos 4, 5 e 6 do livro didático'
+    },
+    {
+      id: 3,
+      title: 'Limpar a casa',
+      alert: enums.Alert.NIVEL_1,
+      status: enums.Status.COMPLETED,
+      description: 'Limpar a casa inteira'
+    }
+  ]
+}
+
 const TarefasSlice = createSlice({
   name: 'tarefas',
-  initialState: [
-    new Tarefa(
-      'Fazer compra do mês',
-      enums.Alert.NIVEL_2,
-      enums.Status.PENDING,
-      'Ir ao mercado no primeiro dia do mês após receber o salário',
-      1
-    ),
-
-    new Tarefa(
-      'Estudar para a prova de matemática',
-      enums.Alert.NIVEL_3,
-      enums.Status.PENDING,
-      'Revisar os capítulos 4, 5 e 6 do livro didático',
-      2
-    ),
-
-    new Tarefa(
-      'Limpar a casa',
-      enums.Alert.NIVEL_1,
-      enums.Status.COMPLETED,
-      'Limpar a casa inteira',
-      3
-    )
-  ],
+  initialState,
   reducers: {
-    remover: (state, action: PayloadAction<number>) => {
-      state = state.filter((tarefa) => tarefa.id !== action.payload)
+    remove: (state, action: PayloadAction<number>) => {
+      state.itens = [
+        ...state.itens.filter((tarefa) => tarefa.id !== action.payload)
+      ]
+    },
+    edit: (state, action: PayloadAction<Tarefa>) => {
+      const indexTarefa = state.itens.findIndex(
+        (t) => t.id === action.payload.id
+      )
+      if (indexTarefa >= 0) {
+        state.itens[indexTarefa] = action.payload
+      }
     }
   }
 })
 
-export const { remover } = TarefasSlice.actions
+export const { remove, edit } = TarefasSlice.actions
 
 export default TarefasSlice.reducer
