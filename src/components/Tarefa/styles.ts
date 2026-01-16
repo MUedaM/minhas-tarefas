@@ -28,10 +28,27 @@ export const Card = styled.div`
   border-radius: 16px;
 `
 
-export const Title = styled.h3`
+export const Title = styled.textarea`
   font-size: 16px;
   font-weigtht: bold;
+  text-transform: uppercase;
   margin-bottom: 16px;
+  color: ${Colors.colorTextArea};
+  line-height: 24px;
+  font-family: 'Roboto Mono', monospace;
+  display: block;
+  width: 100%;
+  resize: none;
+  border-color: transparent;
+  background-color: transparent;
+  max-height: 35px;
+  overflow: hidden;
+  padding: 4px;
+
+  &:focus {
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
 `
 
 export const Tag = styled.span<TagProps>`

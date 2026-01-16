@@ -8,7 +8,7 @@ import TarefaType from '../../models/tarefa'
 type props = TarefaType
 
 const Tarefa = ({
-  title,
+  title: titleOriginal,
   alert,
   status,
   description: descriptionOriginal,
@@ -16,22 +16,32 @@ const Tarefa = ({
 }: props) => {
   const dispatch = useDispatch()
   const [editing, setEditing] = useState(false)
+  const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
 
   useEffect(() => {
+    if (titleOriginal.length > 0) {
+      setTitle(titleOriginal)
+    }
     if (descriptionOriginal.length > 0) {
       setDescription(descriptionOriginal)
     }
-  }, [descriptionOriginal])
+  }, [titleOriginal, descriptionOriginal])
 
   function cancelEditing() {
     setEditing(false)
+    setTitle(titleOriginal)
     setDescription(descriptionOriginal)
   }
 
   return (
     <S.Card>
-      <S.Title>{title}</S.Title>
+      <S.Title
+        disabled={!editing}
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Titulo da tarefa"
+      />
       <S.Tag parametro="alert" alert={alert}>
         {alert}
       </S.Tag>
