@@ -13,7 +13,7 @@ const initialState: TarefasState = {
       id: 1,
       title: 'Fazer compra do mês',
       alert: enums.Alert.NIVEL_2,
-      status: enums.Status.PENDING,
+      status: enums.Status.COMPLETED,
       description: 'Ir ao mercado no primeiro dia do mês após receber o salário'
     },
     {

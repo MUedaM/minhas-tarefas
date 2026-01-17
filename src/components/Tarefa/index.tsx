@@ -42,10 +42,10 @@ const Tarefa = ({
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Titulo da tarefa"
       />
-      <S.Tag parametro="alert" alert={alert}>
+      <S.Tag parameter="alert" alert={alert}>
         {alert}
       </S.Tag>
-      <S.Tag parametro="status" status={status}>
+      <S.Tag parameter="status" status={status}>
         {status}
       </S.Tag>
       <S.Description

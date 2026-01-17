@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
 import FilterCard from '../../components/FilterCard'
-import * as S from './styles'
 import { RootReducer } from '../../store'
 import { setTermo } from '../../store/reducers/filter'
+import * as S from './styles'
+import * as enums from '../../utils/enums/Tarefa'
 
 const BarraLateral = () => {
   const dispatch = useDispatch()
@@ -18,12 +19,32 @@ const BarraLateral = () => {
           onChange={(evento) => dispatch(setTermo(evento.target.value))}
         />
         <S.Filter>
-          <FilterCard legend="Pendentes" adder={1} />
-          <FilterCard legend="Concluidas" adder={2} />
-          <FilterCard legend="Urgentes" adder={3} />
-          <FilterCard legend="Importantes" adder={4} />
-          <FilterCard legend="Normal" adder={5} />
-          <FilterCard legend="Todas" adder={15} active />
+          <FilterCard
+            valor={enums.Status.PENDING}
+            criterio="Status"
+            legend="Pendentes"
+          />
+          <FilterCard
+            valor={enums.Status.COMPLETED}
+            criterio="Status"
+            legend="Concluidas"
+          />
+          <FilterCard
+            valor={enums.Alert.NIVEL_3}
+            criterio="Alert"
+            legend="Urgentes"
+          />
+          <FilterCard
+            valor={enums.Alert.NIVEL_2}
+            criterio="Alert"
+            legend="Importantes"
+          />
+          <FilterCard
+            valor={enums.Alert.NIVEL_1}
+            criterio="Alert"
+            legend="Normal"
+          />
+          <FilterCard criterio="All" legend="Todas" />
         </S.Filter>
       </div>
     </S.Aside>

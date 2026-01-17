@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 import Colors from '../../styles/colors'
 
-import { Props } from '.'
+type Props = {
+  active: boolean
+}
 
-type PropsOmit = Omit<Props, 'adder' | 'legend'>
-
-export const Card = styled.div<PropsOmit>`
+export const Card = styled.div<Props>`
   padding: 8px;
   border: 1px solid
     ${(props) => (props.active ? Colors.colorBorderActive : Colors.colorBorder)};
