@@ -3,6 +3,7 @@ import FilterCard from '../../components/FilterCard'
 import { RootReducer } from '../../store'
 import { setTermo } from '../../store/reducers/filter'
 import * as S from './styles'
+import { Input } from '../../styles/global'
 import * as enums from '../../utils/enums/Tarefa'
 
 const BarraLateral = () => {
@@ -12,7 +13,7 @@ const BarraLateral = () => {
   return (
     <S.Aside>
       <div>
-        <S.Input
+        <Input
           type="text"
           placeholder="Buscar"
           value={termo}

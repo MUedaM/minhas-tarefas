@@ -4,6 +4,7 @@ import * as S from './styles'
 
 import { remove, edit } from '../../store/reducers/tarefas'
 import TarefaType from '../../models/tarefa'
+import { ButtonSave } from '../../styles/global'
 
 type props = TarefaType
 
@@ -57,7 +58,7 @@ const Tarefa = ({
       <S.ActionBar>
         {editing ? (
           <>
-            <S.ButtonSave
+            <ButtonSave
               onClick={() => {
                 dispatch(
                   edit({
@@ -72,7 +73,7 @@ const Tarefa = ({
               }}
             >
               Salvar
-            </S.ButtonSave>
+            </ButtonSave>
             <S.ButtonRemoveCancel onClick={cancelEditing}>
               Cancelar
             </S.ButtonRemoveCancel>
