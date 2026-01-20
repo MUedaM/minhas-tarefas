@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, ChangeEvent } from 'react'
 import { useDispatch } from 'react-redux'
 import * as S from './styles'
 
-import { remove, edit } from '../../store/reducers/tarefas'
+import { remove, edit, changeStatus } from '../../store/reducers/tarefas'
 import TarefaType from '../../models/tarefa'
 import { ButtonSave } from '../../styles/global'
+import * as enums from '../../utils/enums/Tarefa'
 
 type props = TarefaType
 
@@ -35,14 +36,32 @@ const Tarefa = ({
     setDescription(descriptionOriginal)
   }
 
+  function setPending(e: ChangeEvent<HTMLInputElement>) {
+    dispatch(changeStatus({ id, finished: e.target.checked }))
+  }
+
   return (
     <S.Card>
-      <S.Title
-        disabled={!editing}
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Titulo da tarefa"
-      />
+      <label htmlFor={title}>
+        <input
+          type="checkbox"
+          id={title}
+          checked={status === enums.Status.COMPLETED}
+          onChange={setPending}
+          disabled={editing}
+        />
+        {editing ? (
+          <>
+            <S.Evidence>EDITANDO...</S.Evidence>
+            <S.TitleEditing
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </>
+        ) : (
+          <S.Title>{title}</S.Title>
+        )}
+      </label>
       <S.Tag parameter="alert" alert={alert}>
         {alert}
       </S.Tag>
@@ -53,7 +72,6 @@ const Tarefa = ({
         disabled={!editing}
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        placeholder="Descrição da tarefa"
       />
       <S.ActionBar>
         {editing ? (

@@ -26,24 +26,54 @@ export const Card = styled.div`
   padding: 16px;
   margin-bottom: 16px;
   border-radius: 16px;
+
+  label {
+    display: flex;
+    align-items: center;
+  }
+`
+export const Evidence = styled.em`
+  font-size: 18px;
+  color: ${Colors.colorTextArea};
+  line-height: 24px;
+  margin-left: 8px;
 `
 
-export const Title = styled.textarea`
-  font-size: 16px;
+export const Title = styled.p`
+  font-size: 18px;
   font-weigtht: bold;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  color: ${Colors.colorTextArea};
+  line-height: 24px;
+  font-family: 'Roboto Mono', monospace;
+  display: block;
+  width: 100%;
+  border: 1px solid transparent;
+  background-color: transparent;
+  max-height: 35px;
+  overflow: hidden;
+  padding: 4px;
+  margin-left: 8px;
+  cursor: pointer;
+  alingn-items: center;
+`
+
+export const TitleEditing = styled.textarea`
+  font-size: 18px;
+  font-weigtht: bold;
+  text-transform: uppercase;
   color: ${Colors.colorTextArea};
   line-height: 24px;
   font-family: 'Roboto Mono', monospace;
   display: block;
   width: 100%;
   resize: none;
-  border-color: transparent;
+  border: 1px solid transparent;
   background-color: transparent;
-  max-height: 35px;
+  max-height: 34px;
   overflow: hidden;
-  padding: 4px;
+  padding: 3.5px;
+  margin-left: 8.5px;
 
   &:focus {
     outline: none;
@@ -58,6 +88,7 @@ export const Tag = styled.span<TagProps>`
   font-size: 10px;
   background-color: ${(props) => getTagBackgroundColor(props)};
   border-radius: 8px;
+  margin-top: 16px;
   margin-right: 16px;
   display: inline-block;
 `

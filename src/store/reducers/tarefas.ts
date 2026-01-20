@@ -61,10 +61,23 @@ const TarefasSlice = createSlice({
       } else {
         state.itens.push(action.payload)
       }
+    },
+    changeStatus: (
+      state,
+      action: PayloadAction<{ id: number; finished: boolean }>
+    ) => {
+      const indexTarefa = state.itens.findIndex(
+        (t) => t.id === action.payload.id
+      )
+      if (indexTarefa >= 0) {
+        state.itens[indexTarefa].status = action.payload.finished
+          ? enums.Status.COMPLETED
+          : enums.Status.PENDING
+      }
     }
   }
 })
 
-export const { remove, edit, cadastrar } = TarefasSlice.actions
+export const { remove, edit, cadastrar, changeStatus } = TarefasSlice.actions
 
 export default TarefasSlice.reducer
