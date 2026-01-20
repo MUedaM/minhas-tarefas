@@ -12,7 +12,8 @@ export type Props = {
 
 const FilterCard = ({ legend, criterio, valor }: Props) => {
   const dispatch = useDispatch()
-  const { filter, tarefas } = useSelector((state: RootReducer) => state)
+  const filter = useSelector((state: RootReducer) => state.filter)
+  const tarefas = useSelector((state: RootReducer) => state.tarefas)
   // Alteração realizada para evitar conflito no navegador
   // const { filter, tarefas } = useSelector((state: RootReducer) => state)
 
@@ -44,7 +45,7 @@ const FilterCard = ({ legend, criterio, valor }: Props) => {
   const adder = adderTarefas()
 
   return (
-    <S.Card active={active} onClick={filterDispatch}>
+    <S.Card $active={active} onClick={filterDispatch}>
       <S.Adder>{adder}</S.Adder>
       <S.Label>{legend}</S.Label>
     </S.Card>

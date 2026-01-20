@@ -5,18 +5,18 @@ import * as enums from '../../utils/enums/Tarefa'
 import { Button } from '../../styles/global'
 
 type TagProps = {
-  alert?: enums.Alert
-  status?: enums.Status
-  parameter: 'status' | 'alert'
+  $alert?: enums.Alert
+  $status?: enums.Status
+  $parameter: 'status' | 'alert'
 }
 
 function getTagBackgroundColor(props: TagProps): string {
-  if (props.parameter === 'alert') {
-    if (props.alert === enums.Alert.NIVEL_3) return Colors.colorTagRed
-    if (props.alert === enums.Alert.NIVEL_2) return Colors.colorTagYellow2
-  } else if (props.parameter === 'status') {
-    if (props.status === enums.Status.PENDING) return Colors.colorTagYellow1
-    if (props.status === enums.Status.COMPLETED) return Colors.colorTagGreen
+  if (props.$parameter === 'alert') {
+    if (props.$alert === enums.Alert.NIVEL_3) return Colors.colorTagRed
+    if (props.$alert === enums.Alert.NIVEL_2) return Colors.colorTagYellow2
+  } else if (props.$parameter === 'status') {
+    if (props.$status === enums.Status.PENDING) return Colors.colorTagYellow1
+    if (props.$status === enums.Status.COMPLETED) return Colors.colorTagGreen
   }
   return Colors.colorTagGray
 }

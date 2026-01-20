@@ -62,10 +62,10 @@ const Tarefa = ({
           <S.Title>{title}</S.Title>
         )}
       </label>
-      <S.Tag parameter="alert" alert={alert}>
+      <S.Tag $parameter="alert" $alert={alert}>
         {alert}
       </S.Tag>
-      <S.Tag parameter="status" status={status}>
+      <S.Tag $parameter="status" $status={status}>
         {status}
       </S.Tag>
       <S.Description

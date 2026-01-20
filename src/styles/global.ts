@@ -54,7 +54,14 @@ export const Input = styled.input`
     }
   }
 `
-export const Button = styled.button`
+interface ButtonProps {
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
+  children?: React.ReactNode
+  type?: 'button' | 'submit' | 'reset'
+  disabled?: boolean
+}
+
+export const Button = styled.button<ButtonProps>`
   font-weight: bold;
   font-size: 12px;
   color: ${Colors.colorText};
@@ -66,7 +73,7 @@ export const Button = styled.button`
   margin-right: 8px;
 `
 
-export const ButtonSave = styled(Button)`
+export const ButtonSave = styled(Button)<ButtonProps>`
   background-color: ${Colors.colorTagGreen};
 `
 
