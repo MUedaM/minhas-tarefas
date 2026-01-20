@@ -13,6 +13,8 @@ export type Props = {
 const FilterCard = ({ legend, criterio, valor }: Props) => {
   const dispatch = useDispatch()
   const { filter, tarefas } = useSelector((state: RootReducer) => state)
+  // Alteração realizada para evitar conflito no navegador
+  // const { filter, tarefas } = useSelector((state: RootReducer) => state)
 
   const verificationActive = () => {
     const sameCriterio = filter.criterio === criterio

@@ -4,7 +4,7 @@ import * as S from './styles'
 
 import { remove, edit, changeStatus } from '../../store/reducers/tarefas'
 import TarefaType from '../../models/tarefa'
-import { ButtonSave } from '../../styles/global'
+import { Button, ButtonSave } from '../../styles/global'
 import * as enums from '../../utils/enums/Tarefa'
 
 type props = TarefaType
@@ -98,7 +98,7 @@ const Tarefa = ({
           </>
         ) : (
           <>
-            <S.Button onClick={() => setEditing(true)}>Editar</S.Button>
+            <Button onClick={() => setEditing(true)}>Editar</Button>
             <S.ButtonRemoveCancel onClick={() => dispatch(remove(id))}>
               Remover
             </S.ButtonRemoveCancel>

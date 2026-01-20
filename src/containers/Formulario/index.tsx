@@ -5,7 +5,6 @@ import { ButtonSave, MainContainer, Title } from '../../styles/global'
 import { Input } from '../../styles/global'
 import { AlertsOption, Form, Options } from './styles'
 import * as enums from '../../utils/enums/Tarefa'
-import Tarefa from '../../models/tarefa'
 import { cadastrar } from '../../store/reducers/tarefas'
 import { useNavigate } from 'react-router-dom'
 
@@ -18,15 +17,15 @@ const Formulario = () => {
 
   const CadastrarTarefa = (e: FormEvent) => {
     e.preventDefault()
-    const NovaTarefa = new Tarefa(
-      title,
-      alert,
-      enums.Status.PENDING,
-      description,
-      9
-    )
 
-    dispatch(cadastrar(NovaTarefa))
+    dispatch(
+      cadastrar({
+        title,
+        alert,
+        description,
+        status: enums.Status.PENDING
+      })
+    )
     navigate('/')
   }
 

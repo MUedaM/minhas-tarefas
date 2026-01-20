@@ -4,7 +4,7 @@ import AddButton from '../../AddButton'
 
 const Home = () => (
   <>
-    <BarraLateral />
+    <BarraLateral showFilters />
     <ListaTarefas />
     <AddButton />
   </>

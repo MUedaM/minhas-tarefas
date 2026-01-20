@@ -1,6 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components'
 import Colors from './colors'
-import { Button } from '../components/Tarefa/styles'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -54,6 +53,17 @@ export const Input = styled.input`
       opacity: 1;
     }
   }
+`
+export const Button = styled.button`
+  font-weight: bold;
+  font-size: 12px;
+  color: ${Colors.colorText};
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  background-color: ${Colors.colorButtonEdit};
+  border-radius: 8px;
+  margin-right: 8px;
 `
 
 export const ButtonSave = styled(Button)`
